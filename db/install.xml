@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+  <XMLDB PATH="local/chat/db" VERSION="20141018" COMMENT="XMLDB file for Moodle local/chat"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+  >
+    <TABLES>
+      <TABLE NAME="local_chat" COMMENT="chat table">
+        <FIELDS>
+          <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="useridfrom"/>
+          <FIELD NAME="useridfrom" TYPE="int" LENGTH="10" NOTNULL="false" DEFAULT="0" SEQUENCE="false" NEXT="useridto" PREVIOUS="id"/>
+          <FIELD NAME="useridto" TYPE="int" LENGTH="10" NOTNULL="false" DEFAULT="0" SEQUENCE="false" NEXT="visiblefrom" PREVIOUS="useridfrom"/>
+          <FIELD NAME="visiblefrom" TYPE="int" LENGTH="10" NOTNULL="false" DEFAULT="1" SEQUENCE="false" NEXT="visibleto" PREVIOUS="useridto"/>
+          <FIELD NAME="visibleto" TYPE="int" LENGTH="10" NOTNULL="false" DEFAULT="1" SEQUENCE="false" NEXT="message" PREVIOUS="visiblefrom"/>
+		  <FIELD NAME="message" TYPE="text" NOTNULL="false" SEQUENCE="false" NEXT="timecreated" PREVIOUS="visibleto"/>
+		  <FIELD NAME="timecreated" TYPE="int" LENGTH="11" NOTNULL="false" DEFAULT="0" SEQUENCE="false" NEXT="timeread" PREVIOUS="message"/>
+		  <FIELD NAME="timeread" TYPE="int" LENGTH="11" NOTNULL="false" DEFAULT="0" SEQUENCE="false" PREVIOUS="timecreated"/>
+        </FIELDS>
+        <KEYS>
+          <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        </KEYS>
+      </TABLE>
+    </TABLES>
+  </XMLDB>
